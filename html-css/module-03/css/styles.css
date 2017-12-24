@@ -1,0 +1,63 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+  body {
+    min-height: 100vh;
+    font-size: 16px;
+    font-family: 'Pathway Gothic One', sans-serif;
+    background-image: url(../imeges/page-bg.png); 
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  
+  }
+  .wrapper {
+    width: 480px;
+    margin: auto;
+    padding: 20px;
+    background-color: white;
+  }
+  .article-title {
+    text-transform: uppercase;
+    color: #263555;
+    font-size: 25px;
+    font-family: "Pathway Gothic One", sans-serif;
+    margin-bottom: 30px;
+  }
+  .profile {
+    margin-bottom: 40px;
+  }
+  .principles {
+    padding-bottom: 40px;
+    margin-bottom: 40px;
+    border-bottom: 1px solid #adafaf;
+  }
+  .article-img {
+    display: block;
+    width: 100%;
+  }
+  .article-slogan {
+    color: #263555;
+    font-size: 14px;
+    font-weight: bold;
+    font-family: "Arial", sans-serif;
+    margin: 20px 0px;
+  }
+  .article-text {
+    color: #4e5050;
+    font-size: 12px;
+    margin-bottom: 20px; 
+  }  
+  .articl-list {
+    list-style-type: none;
+    color: #263555;
+    font-size: 14px;
+    text-align: center;
+    column-count: 2;
+  }
+  .offer {
+    margin-bottom: 20px;
+  }
+  
