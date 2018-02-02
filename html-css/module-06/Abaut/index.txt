@@ -1,0 +1,44 @@
+masthead-wrapper
+  -> masthead
+      -> logo
+      -> nav-menu
+        -> nav-menu-item
+        -> nav-menu-link
+			-> nav-submenu triangle-top
+				-> nav-submenu-item
+				-> nav-submenu-link
+    
+
+article-wrapper
+  -> container, section, article
+    -> article profile clearfix
+	  -> article-title
+	  -> article-img
+      -> article-slogan
+      -> article-text
+	-> article principles
+      -> article-title
+	  -> article-list
+        -> article-list-item-principles
+			-> article-slogan
+			-> article-text
+  -> container, section, article        
+	-> article offer		
+	  -> article-title
+	  -> article-slogan
+      -> article-text	
+	  -> article-list	
+		-> article-list-item-offer	
+	-> article testimonial	
+	  -> article-title
+      -> testimonial-card
+        -> testimonial-card-text
+        -> testimonial-card-meta
+            -> testimonial-card-meta-name
+            -> testimonial-card-meta-pos
+
+-> footer-wrapper
+  -> container, section, footer
+    -> footer-list
+      -> footer-list-item
+    -> footer-contacts
