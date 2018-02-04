@@ -189,26 +189,123 @@ li:hover > .conteiner > .card-icon {
     content: "\2038";
     color: #ffffff;
 }
+/*FOOTER*/
 
-footer {
+.masfooter {
     display: flex;
-    background-color: #30455b;
+    flex-wrap: wrap;
+
 }
 
-.footer-nav {
-    
+.masfooter-conteiner {
+    display: flex;
+    background-color: #263555;
+    width: 1020px;
+    height: 130px;
 }
 
-.footer-list {
-    
+.masfooter-nav {
+    flex: 1 0 75%;
 }
 
-.footer-item {
+.masfooter-nav-list {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 37px;
+}
+
+.masfooter-nav-link {
+    display: inline-block;
+    display: flex;
+    flex: 1 0 30%;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.masfooter-nav-link:nth-last-child(-n + 3) {
+    margin-bottom: 0px;
+}
+.masfooter-nav-item {
     color: #ffffff;
-    /*font-family: "Condensed light", sans-serif;*/
     font-size: 16px;
+
 }
 
-.footer-link {
-    
+.masfooter-contacts {
+    display: flex;
+    flex: 1 0 25%;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.masfooter-contacts-text {
+    text-transform: uppercase;
+    color: #ffffff;
+    margin-bottom: 5px;
+}
+
+.masfooter-contacts-text:last-child {
+    margin-bottom: 0px;
+    text-transform: uppercase;
+}
+
+.masfooter-social {
+    display: flex;
+    width: 1020px;
+    flex-wrap: wrap;
+}
+
+.masfooter-social-inons {
+    display: flex;
+    flex: 1 0 100%;
+    justify-content: center;
+    align-content: center;
+    height: 75px;
+}
+
+.masfooter-social-inons-list {
+    display: flex;
+    align-items: center;
+}
+
+.masfooter-social-inons-link {
+    margin-right: 10px;
+}
+
+.masfooter-social-inons-link:last-child {
+    margin-right: 0px;
+}
+
+.masfooter-social-inons-item{
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+}
+
+.tv {
+    background-image: url(../images/Layer-51.png);
+}
+
+.fb {
+    background-image: url(../images/Layer-47.png);
+}
+
+.gl {
+    background-image: url(../images/Layer-48.png);
+}
+
+.in {
+    background-image: url(../images/Layer-49.png);
+}
+
+.masfooter-social-wor {
+    display: flex;
+    justify-content: center;
+    flex: 1 0 100%;
+}
+
+.masfooter-social-wor-text {
+    color: #ffffff;
+    font-size: 12px;
+    font-family: Arial, Helvetica, sans-serif;
 }

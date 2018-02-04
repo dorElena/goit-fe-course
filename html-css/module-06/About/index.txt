@@ -1,5 +1,5 @@
-masthead-wrapper
-  -> masthead
+mastheader-wrapper
+  -> mastheader
       -> logo
       -> nav-menu
         -> nav-menu-item
@@ -16,12 +16,14 @@ article-wrapper
 	  -> article-img
       -> article-slogan
       -> article-text
+
 	-> article principles
       -> article-title
 	  -> article-list
         -> article-list-item-principles
 			-> article-slogan
 			-> article-text
+      
   -> container, section, article        
 	-> article offer		
 	  -> article-title
