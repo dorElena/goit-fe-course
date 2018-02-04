@@ -74,7 +74,11 @@ a {
 .mastheader-nav-menu-link:hover {
     color: #263555;
 }
-  
+
+.mastheader-nav-menu-item:hover > .mastheader-nav-submenu {
+    display: block;
+}
+
 .mastheader-nav-submenu {
     display: none;
     position: absolute;
