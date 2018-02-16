@@ -1,0 +1,176 @@
+@import url('reset.css');
+
+.masthead-wrapper {
+  background-image: url('../images/Rectangle-1.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.container {
+  min-width: 320px;
+  max-width: 1400px;
+  margin: auto;
+}
+
+.banner {
+  display: flex;
+  flex-direction: column;
+  min-height: 700px;
+}
+
+.masthead {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 80px;
+}
+
+.logo {
+  display: inline-block;
+  color: #ffffff;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  text-decoration: none;
+  
+}
+
+.nav {
+  display: flex;
+}
+
+.nav-item {
+  display: inline-block;
+  margin-left: 30px;
+}
+
+.nav-item:first-child {
+  margin-left: 0;
+}
+
+.nav-link {
+  display: block;
+  color: #ffffff;
+  width: 90px;
+  height: 35px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 35px;
+  text-align: center;
+  text-transform: uppercase;
+  text-decoration: none;
+  outline: 2px;
+}
+
+.nav-link:hover {
+  border: 3px solid #ffffff;
+  border-radius: 15px;
+  
+}
+
+/* home */
+
+.home {
+  text-align: center;
+  margin: auto;
+}
+
+.home-title {
+  margin-bottom: 2%;
+  color: #ffffff;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 30px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.home-slogan {
+  display: block;
+  color: #ffffff;
+  font-family: 'Roboto', sans-serif;
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+
+.home-btn {
+  display: inline-block;
+  width: 280px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  border-radius: 15px;
+  color: #ffffff;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-decoration: none;
+  background-color: #ff4e50;
+}
+
+/* PARTNERS */
+
+.partners-wrapper {
+  background-color: #ffffff;
+}
+
+.section {
+  padding-top: 120px;
+  padding-bottom: 120px;
+}
+
+.partners-header {
+  margin: auto;
+  text-align: center;
+  margin-bottom: 90px;
+}
+
+.partners-header-title {
+  color: #333333;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+/* PARTNERS LIST */
+
+.partners-card-img {
+  margin: auto;
+}
+
+.partners-card-name {
+  color: #333333;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.partners-card-text {
+  color: #666666;
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  text-align: center;
+}
+
+.partners-btn {
+  display: inline-block;
+  width: 280px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  border: 2px solid #ff4e50;
+  border-radius: 15px;
+  color: #ff4e50;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-decoration: none;
+}
