@@ -339,7 +339,7 @@ img {
 }
   
 .team__card-content::after {
-  opacity: 1;
+  opacity: 0;
   position: absolute;
   top: 0;
   left: 0;
