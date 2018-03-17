@@ -122,10 +122,14 @@ img {
   border-color: #fce38a;
 }
 
-.shopping-cart:hover, .magnifying-glass:hover {
+.shopping-cart:hover > #a {
   fill: #fce38a;
 }
-  
+
+.magnifying-glass:hover > #b {
+  fill: #fce38a;
+}
+
 /* HERO */
 .hero {
   width: 840px;
