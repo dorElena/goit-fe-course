@@ -1,0 +1,134 @@
+.masthead-wrapper {
+  background-image: linear-gradient(
+    to top,
+      rgba(252, 227, 138, 0.81) 0%,
+      rgba(243, 129, 129, 0.81) 100%
+    ),
+    url('../img/Layer-15.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+  
+.container {
+  max-width: 1200px;
+  margin: auto;
+}
+    
+.masthead-wrapper__banner {
+  min-height: 1000px;
+}
+
+.masthead {
+  @include flex ('all-s-b');
+  min-height: 80px;
+  margin-bottom: 150px;
+}
+    
+.logo {
+  display: inline-block;
+  color: $color-white;
+  font-size: 30px;
+  font-weight: 700;
+  text-decoration: none;
+}
+  
+.masthead__nav {
+  @include flex ('');
+}
+  
+.nav {
+  @include flex ('');
+  padding: 0;
+  margin: 28px 0 0 0;
+}
+    
+.site-nav__item, .user-nav__item {
+  display: inline-block;
+  margin-left: 50px;
+}
+
+.site-nav__item:first-child {
+  margin-left: 0;
+}
+    
+%nav__link {
+  display: block;
+  border-bottom: 3px solid transparent;
+  text-decoration: none;
+}
+
+.user-nav__link {
+  @extend %nav__link;
+}
+  
+.site-nav__link {
+  @extend %nav__link;
+  color: $color-white;
+  font-size: 14px;
+  line-height: 14px;
+  font-weight: 400;
+  text-transform: uppercase;
+  padding-bottom: 7px;
+}
+  
+.site-nav__link:hover, .user-nav__link:hover {
+  border-color: $color-shortbread;
+}
+
+.site-nav__link:hover {
+  color: $color-shortbread;
+}
+  
+.shopping-cart:hover > #a, .magnifying-glass:hover > #b {
+  fill: $color-shortbread;
+}
+  
+/* HERO */
+.hero {
+  width: 840px;
+  text-align: center;
+  margin: auto;
+}
+  
+.hero__slogan {
+  font-family: $font-kaushan;
+  color: $color-white;
+  font-size: 72px;
+  margin: 0 0 42px 0;
+}
+  
+.hero__title {
+  margin: 0 0 50px 0;
+  color: $color-white;
+  font-size: 150px;
+  font-weight: 700;
+  line-height: 150px;
+  text-transform: uppercase;
+}
+    
+.hero__btn {
+  display: inline-block;
+  width: 160px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  border: 3px solid white;
+  color: $color-white;
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+/* MEDIA*/
+@media (min-resolution: 192dpi), (min-resolution: 2dppx) {
+  .masthead-wrapper {
+    background-image: linear-gradient(
+      to top,
+        rgba(252, 227, 138, 0.81) 0%,
+        rgba(243, 129, 129, 0.81) 100%
+      ),
+      url("../images/Layer-15@2x.jpg");
+  }
+}

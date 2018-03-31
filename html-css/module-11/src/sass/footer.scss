@@ -1,0 +1,40 @@
+/* FOOTER */
+.footer {
+  @include flex ('s-b');
+  border-top: 1px solid $color-tan;
+  padding: 25px 0;
+}
+
+.footer__text {
+  font-size: 14px;
+  font-weight: 700;
+  color: $color-pebble;
+}
+
+.footer__link {
+  color: $color-watermelon;
+  text-decoration: none;
+}
+
+.form__inp {
+  font-family: $font-roboto;
+  color: $color-yam;
+  font-size: 15px;
+  line-height: 16px;
+  font-style: italic;
+  padding: 11px 0 11px 11px;
+  width: 230px;
+  border: 1px solid $color-tan;
+  margin-right: -4px;
+}
+  
+.form__btn {
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 700;
+  background-color: $color-mint;
+  width: 150px;
+  text-transform: uppercase;
+  height: 40px;
+  border: 1px solid $color-mint;
+}
