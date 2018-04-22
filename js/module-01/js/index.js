@@ -20,9 +20,9 @@ const GROUP_SHARM = 'SHARM';
 const GROUP_HURGADA = 'HURGADA';
 const GROUP_TABA = 'TABA';
 
-let seats_sharm = 15;
-let seats_hurgada = 25;
-let seats_taba = 6;
+let seatsSharm = 15;
+let seatsHurgada = 25;
+let seatsTaba = 6;
 
 const userInput = prompt('Введите, пожалуйста, число необходимых мест', '3');
 const seatsGroup = Number(userInput);
@@ -30,27 +30,26 @@ const seatsGroup = Number(userInput);
 const isValidInput = userInput !== null && !Number.isNaN(seatsGroup);
 
 if (isValidInput) {
-  let seatAvailability;
-  if (seatsGroup >= 1 && seatsGroup <= seats_taba) {
-  var qw = confirm(`Есть место в группе ${GROUP_TABA}. Вы согласны?`);
+  if (seatsGroup >= 1 && seatsGroup <= seatsTaba) {
+    let qw = confirm(`Есть место в группе ${GROUP_TABA}. Вы согласны?`);
     if (qw) {alert (`Приятного путешествия в группе ${GROUP_TABA}!
-    *колличество оставшихся мест в группе: ${seats_taba = seats_taba - seatsGroup}`);}
+    *колличество оставшихся мест в группе: ${seatsTaba = seatsTaba - seatsGroup}`);}
     else {
       alert('Нам очень жаль, приходите еще!');
     }
   }
-  else if (seatsGroup <= seats_sharm) {
-    var qw = confirm(`Есть место в группе ${GROUP_SHARM}. Вы согласны?`);
+  else if (seatsGroup <= seatsSharm) {
+    let qw = confirm(`Есть место в группе ${GROUP_SHARM}. Вы согласны?`);
       if (qw) {alert(`Приятного путешествия в группе ${GROUP_SHARM}!
-      *колличество оставшихся мест в группе: ${seats_sharm = seats_sharm - seatsGroup}`)
+      *колличество оставшихся мест в группе: ${seatsSharm = seatsSharm - seatsGroup}`)
       }
       else {alert('Нам очень жаль, приходите еще!')
       }
   }
-  else if (seatsGroup <= seats_hurgada) {
-    var qw = confirm(`Есть место в группе ${GROUP_HURGADA}. Вы согласны?`);
+  else if (seatsGroup <= seatsHurgada) {
+    let qw = confirm(`Есть место в группе ${GROUP_HURGADA}. Вы согласны?`);
     if (qw) {alert(`Приятного путешествия в группе ${GROUP_HURGADA}!
-      *колличество оставшихся мест в группе: ${seats_hurgada = seats_hurgada - seatsGroup}`)
+      *колличество оставшихся мест в группе: ${seatsHurgada = seatsHurgada - seatsGroup}`)
     }
     else {alert('Нам очень жаль, приходите еще!')
     }
