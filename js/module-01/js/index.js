@@ -14,6 +14,8 @@
   7. Если ответ нет, выводим alert с текстом "Нам очень жаль, приходите еще!".
   8. Если мест нигде нет, выводим alert с сообщением 'Извините, мест нет.'
 */
+'use strict';
+
 const GROUP_SHARM = 'SHARM';
 const GROUP_HURGADA = 'HURGADA';
 const GROUP_TABA = 'TABA';
@@ -29,23 +31,29 @@ const isValidInput = userInput !== null && !Number.isNaN(seatsGroup);
 
 if (isValidInput) {
   let seatAvailability;
-  if (seatAvailability = seatsGroup >= 1 && seatsGroup<=6) {
+  if (seatsGroup >= 1 && seatsGroup <= seats_taba) {
   var qw = confirm(`Есть место в группе ${GROUP_TABA}. Вы согласны?`);
-    seatAvailability = qw === true ? alert (`Приятного путешествия в группе ${GROUP_TABA}!
-    *колличество оставшихся мест в группе: ${seats_taba = seats_taba - seatsGroup}`) : 
-    alert('Нам очень жаль, приходите еще!');
+    if (qw) {alert (`Приятного путешествия в группе ${GROUP_TABA}!
+    *колличество оставшихся мест в группе: ${seats_taba = seats_taba - seatsGroup}`);}
+    else {
+      alert('Нам очень жаль, приходите еще!');
+    }
   }
-  else if (seatAvailability = seatsGroup > 6 && seatsGroup <= 15) {
+  else if (seatsGroup <= seats_sharm) {
     var qw = confirm(`Есть место в группе ${GROUP_SHARM}. Вы согласны?`);
-      seatAvailability = qw === true ? alert(`Приятного путешествия в группе ${GROUP_SHARM}!
-      *колличество оставшихся мест в группе: ${seats_sharm = seats_sharm - seatsGroup}`) :
-      alert('Нам очень жаль, приходите еще!');
+      if (qw) {alert(`Приятного путешествия в группе ${GROUP_SHARM}!
+      *колличество оставшихся мест в группе: ${seats_sharm = seats_sharm - seatsGroup}`)
+      }
+      else {alert('Нам очень жаль, приходите еще!')
+      }
   }
-  else if (seatAvailability = seatsGroup >15 && seatsGroup <= 25) {
+  else if (seatsGroup <= seats_hurgada) {
     var qw = confirm(`Есть место в группе ${GROUP_HURGADA}. Вы согласны?`);
-      seatAvailability = qw === true ? alert(`Приятного путешествия в группе ${GROUP_HURGADA}!
-      *колличество оставшихся мест в группе: ${seats_hurgada = seats_hurgada - seatsGroup}`) :
-      alert('Нам очень жаль, приходите еще!');
+    if (qw) {alert(`Приятного путешествия в группе ${GROUP_HURGADA}!
+      *колличество оставшихся мест в группе: ${seats_hurgada = seats_hurgada - seatsGroup}`)
+    }
+    else {alert('Нам очень жаль, приходите еще!')
+    }
   }
   else {
     alert('Нам очень жаль, такого количества мест нет!');
