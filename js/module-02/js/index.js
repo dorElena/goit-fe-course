@@ -22,23 +22,28 @@
 */
 let userInput;
 const numbers = [];
+let sum;
 
-while (userInput !== null) {
+do {
   userInput = prompt("Введите число");
   const isValidInput =
-    userInput != "" && !Number.isNaN(Number(userInput));
-  if (isValidInput) {
+    userInput !== null && userInput !== "" && !Number.isNaN(Number(userInput));
+  if (userInput === null) {
+    break;
+  } 
+  if (isValidInput !== null) {
     numbers.push(Number(userInput));
   } else {
     alert('Было введено не число, попробуйте еще раз');
   }
-}
+} while (userInput !== null);
 
 console.log(numbers);
 
-let sum = 0;
-for (let i = 0, max = numbers.length; i < max; i += 1) {
-  sum = sum + numbers[i];
-}
+if (numbers.length !== 0)
+  sum = 0;
+  for (let i = 0, max = numbers.length; i < max; i += 1) {
+    sum = sum + numbers[i];
+  }
 
 alert(`Общая сумма чисел равна ${sum}`);
