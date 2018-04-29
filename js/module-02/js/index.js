@@ -22,7 +22,7 @@
 */
 let userInput;
 const numbers = [];
-let sum;
+let sum = 0;
 
 do {
   userInput = prompt("Введите число");
@@ -31,7 +31,7 @@ do {
   if (userInput === null) {
     break;
   } 
-  if (isValidInput !== null) {
+  if (isValidInput) {
     numbers.push(Number(userInput));
   } else {
     alert('Было введено не число, попробуйте еще раз');
@@ -40,10 +40,12 @@ do {
 
 console.log(numbers);
 
-if (numbers.length !== 0)
-  sum = 0;
+if (numbers.length > 0) {
   for (let i = 0, max = numbers.length; i < max; i += 1) {
     sum = sum + numbers[i];
   }
+}
 
-alert(`Общая сумма чисел равна ${sum}`);
+if (sum !== 0) {
+  alert(`Общая сумма чисел равна ${sum}`);
+}
