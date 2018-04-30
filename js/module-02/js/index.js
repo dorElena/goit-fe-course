@@ -44,8 +44,5 @@ if (numbers.length > 0) {
   for (let i = 0, max = numbers.length; i < max; i += 1) {
     sum = sum + numbers[i];
   }
-}
-
-if (sum !== 0) {
   alert(`Общая сумма чисел равна ${sum}`);
 }
