@@ -31,23 +31,34 @@ const login = function() {
 
 const checkIfLoginExists = function(arr, val) {
     if (!logins.includes(val)) {
-        logins.push(val);
-        console.log('Логин успешно добавлен!');
-        console.log(logins);
-    } else {console.log('Такой логин уже используется!')};
+        return false;
+    } else {
+        return true;
+    }
 };
 
 const checkLoginValidity = function(val) {
     if (val.length <= 4 && val.length >= 16) {
-        console.log('Ошибка! Логин должен быть от 4 до 16 символов');
+        return false;
     } else {
-        checkIfLoginExists(logins, val)
-    };
+        return true;
+    }
 };
 
 const addLogin = function(val, arr) {
     
-    checkLoginValidity(val)
+    if (checkLoginValidity(val) === false) {
+    console.log('Ошибка! Логин должен быть от 4 до 16 символов');
+    } 
+    else if (checkIfLoginExists(arr, val) === false) {
+    logins.push(val);
+        console.log('Логин успешно добавлен!');
+        console.log(logins);
+    } 
+    else {
+        console.log('Такой логин уже используется!');
+    };
 };
 
-addLogin(login(), logins);
+const log = login();
+addLogin(log, logins);
