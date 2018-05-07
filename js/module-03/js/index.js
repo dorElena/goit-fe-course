@@ -30,35 +30,37 @@ const login = function() {
 };
 
 const checkIfLoginExists = function(arr, val) {
-    let loginExists;
-    if (logins.includes(val)) {
-        let loginExists = true;
+    
+    if (!logins.includes(val)) {
+        return false;
     } else {
-        let loginExists = false;
+        return true;
     }
-    return loginExists;
+    
 };
 
 const checkLoginValidity = function(val) {
-    let loginValidity;
-    if (val.length <= 4 || val.length >= 16) {
-        loginValidity = true;
+    
+    if (val.length < 4 || val.length > 16) {
+        return false;
     } else {
-        loginValidity = false;
+        return true;
     }
     return loginValidity;
 };
 
 const addLogin = function(val, arr) {
-    checkLoginValidity(val);
-    if (loginValidity) {
+    let loginValidity = checkLoginValidity(val);
+     
+    if (!loginValidity) {
        console.log('Ошибка! Логин должен быть от 4 до 16 символов');
        return;
     }
     
-    checkIfLoginExists(arr, val);
+    let loginExists = checkIfLoginExists(arr, val);
     if (loginExists) {
         console.log('Такой логин уже используется!');
+        return;
     }
     
     logins.push(val);
