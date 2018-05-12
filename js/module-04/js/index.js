@@ -11,12 +11,12 @@ const products = {
 };
 
 function Cashier(name, products) {
-  
   this.name = name;
   this.products = products;
   this.totalPrice = 0;
   this.customerMoney = 0;
   this.changeAmount = 0;
+  
   this.countTotalPrice = function(order) {
     for (let key in order) {
       if (products.hasOwnProperty(key)) {
@@ -26,12 +26,13 @@ function Cashier(name, products) {
   };
   
   this.getCustomerMoney = function() {
-    this.customerMoney = prompt(
+    do { this.customerMoney = prompt(
       `Общая сумма покупок ${this.totalPrice}. Введите сумму не менее ${this.totalPrice}.`
     );
     if (this.customerMoney === null) {
       break;
     }
+   } while (Number.isNaN(Number(this.customerMoney)) || this.customerMoney < this.totalPrice);
   };
   
   this.countChange = function() {
@@ -47,11 +48,9 @@ function Cashier(name, products) {
   this.serve = function(order) {
     this.countTotalPrice(order);
     this.getCustomerMoney();
-    if (Number.isNaN(Number(this.customerMoney)) && this.customerMoney >= this.totalPrice) {
-      
+    if (this.customerMoney >= this.totalPrice) {
       this.countChange();
       console.log(`Спасибо за покупку, ваша сдача ${this.changeAmount}`);
-    
     } else {
       console.log("Очень жаль, что-то пошло не так, приходите еще");
     }
