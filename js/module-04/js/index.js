@@ -18,12 +18,9 @@ function Cashier(name, products) {
   this.changeAmount = 0;
   
   this.countTotalPrice = function(order) {
-    let productsList = Object.keys(products);
     let orderList = Object.keys(order);
     for (let key of orderList) {
-      if (products.key === order.key){
-        this.totalPrice += (products[key] * order[key]);
-      }
+      this.totalPrice += (this.products[key] * order[key]);
     }
   };
   
@@ -33,7 +30,6 @@ function Cashier(name, products) {
     );
     if (this.customerMoney === null) {
       return null;
-      break;
     }
    } while (Number.isNaN(Number(this.customerMoney)) || this.customerMoney < this.totalPrice);
   };
