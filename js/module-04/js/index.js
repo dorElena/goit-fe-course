@@ -18,8 +18,10 @@ function Cashier(name, products) {
   this.changeAmount = 0;
   
   this.countTotalPrice = function(order) {
-    for (let key in order) {
-      if (products.hasOwnProperty(key)) {
+    let productsList = Object.keys(products);
+    let orderList = Object.keys(order);
+    for (let key of orderList) {
+      if (products.key === order.key){
         this.totalPrice += (products[key] * order[key]);
       }
     }
@@ -30,6 +32,7 @@ function Cashier(name, products) {
       `Общая сумма покупок ${this.totalPrice}. Введите сумму не менее ${this.totalPrice}.`
     );
     if (this.customerMoney === null) {
+      return null;
       break;
     }
    } while (Number.isNaN(Number(this.customerMoney)) || this.customerMoney < this.totalPrice);
@@ -48,11 +51,11 @@ function Cashier(name, products) {
   this.serve = function(order) {
     this.countTotalPrice(order);
     this.getCustomerMoney();
-    if (this.customerMoney >= this.totalPrice) {
-      this.countChange();
-      console.log(`Спасибо за покупку, ваша сдача ${this.changeAmount}`);
-    } else {
+    if (this.customerMoney === null) {
       console.log("Очень жаль, что-то пошло не так, приходите еще");
+    } else {
+    this.countChange();
+      console.log(`Спасибо за покупку, ваша сдача ${this.changeAmount}`);
     }
     this.reset();
   };
