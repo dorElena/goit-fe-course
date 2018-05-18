@@ -49,10 +49,10 @@ function Cashier(name, products) {
     this.getCustomerMoney();
     if (this.customerMoney === null) {
       console.log("Очень жаль, что-то пошло не так, приходите еще");
-    } else {
+      return;
+    }
     this.countChange();
       console.log(`Спасибо за покупку, ваша сдача ${this.changeAmount}`);
-    }
     this.reset();
   };
 }
