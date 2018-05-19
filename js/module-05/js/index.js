@@ -66,5 +66,5 @@ const initialPosts = {
 const getId = () => "-" + Math.random().toString(36).substr(2, 9);
 
 const book = new SocialBook(initialUsers, initialPosts);
-book.addUser({email: 'qweqwe', password: 'qweqwe'});
+book.addUser({login: 'qweqwe@gmai.com', password: 'qweqwe'});
 console.log(book);
