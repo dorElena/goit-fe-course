@@ -33,14 +33,10 @@ function SocialBook (users = [], posts = {}) {
     return this.users.reduce((acc, value) => acc + 1, 0);
   };
 
-  this.addUser = ({email = "mango@mail.com", password = "fjdudyfd"}) => {
-    const user = {
-      id = getId(),
-      login = email,
-      password = password,
-      isActive = false,
-    }
-    
+  this.addUser = (user) => {
+    user.isActive = false;
+    user.id = getId();
+
     this.users.push(user);
   };
 };
@@ -70,5 +66,5 @@ const initialPosts = {
 const getId = () => "-" + Math.random().toString(36).substr(2, 9);
 
 const book = new SocialBook(initialUsers, initialPosts);
-
+book.addUser({email: 'qweqwe', password: 'qweqwe'});
 console.log(book);
