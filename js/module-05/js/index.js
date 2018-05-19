@@ -1,81 +1,56 @@
 "use strict";
-/*
-  Для создания объекта используйте функцию-конструктор, принимающую следующие параметры:
-    - users - массив пользователей. Каждый пользователь это объект с полями:
-        id - уникальный идентификатор
-        login - почта
-        password - пароль
-        isActive - статус активности
-    - posts - объект с ключами равными id пользователя соцсети SocialBook. Значениями свойств 
-      являются массивы постов пользователя. Каждый пост состоит из:
-        id - уникальный идентификатор
-        text - текст поста
-        likes - количество лайков поста
-*/
 
 function SocialBook (users = [], posts = {}) {
-    this.users = users;
-    this.posts = posts;
+  this.users = users;
+  this.posts = posts;
 
-    // - возвращает массив всех пользователей
-    this.getAllUsers = () => {
-        this.users.map(user => user)
- 
+  this.getAllUsers = (users) => {
+    return this.users.map(user => user)
+  };
+    
+  this.getUserByLogin = (users, login) => {
+    return this.users.filter(user => user.login === login);
+  };
+  
+  this.getUserStatus = (userId) => {
+    return initialUsers.reduce((acc, user) => {
+      if (this.user.id === userId) {
+        return (acc = "active");
+      }
+      return acc;
+    }, "inactive");
+  };
+  
+  this.removeUserById = (userId) => {
+    return this.users.find(user => {
+      if (user.id === userId) {
+        delete this.users.user;
+      }
+    });
+  };
+
+  this.getUsersCount = () => {
+    return this.users.reduce((acc, value) => acc + 1, 0);
+  };
+
+  this.addUser = ({email = "mango@mail.com", password = "fjdudyfd"}) => {
+    const user = {
+      id = getId(),
+      login = email,
+      password = password,
+      isActive = false,
     }
     
-    // - ищет и возвращает объект пользователя с совпадающим логином
-    this.getUserByLogin = (login) => {
-        this.users.find(user => user[this.login])
+    this.users.push(user);
+  };
+};
 
-    }
-    
-
-    // - ищет пользователя по id и возвращает 'active'
-    // если isActive true, в противном случае возвращает 'inactive'
-    this.getUserStatus = (userId) => {
-
-    }
-    
-
-    // - принимает объект user с полями email и password и добавляет 
-    //ему поля id(используя функцию getId) и isActive (false). Затем добавляет пользователя в 
-    //свойство users самого экземпляра
-    this.addUser = (email, password) => {
-        this.id = getId();
-        this.login = email;
-        this.password = password;
-        this.isActive = false;
-        }
-    }
-
-    // - удаляет пользователя из массива пользователей по полю id
-    this.removeUserById = (userId) => {
-        //find
-        if (initialUsers.find(user => user === userId)) {
-            delete initialUsers.user
-        }
-    }
-
-    // - возвращает общее количество пользователей
-    this.getUsersCount = () => {
-        initialUsers.map()
-    }
-
-    }
-
-
-/*
-  Используйте следующий массив пользователей при создании экземпляра SocialBook
-*/
 const initialUsers = [
   { id: "-s19a6hqce", login: "mangozedog@mail.com", password: "qwe123zv", isActive: true },
   { id: "-qkpzenjxe", login: "polysweet@skynet.ze", password: "123zxc78", isActive: true },
   { id: "-e51cpd4di", login: "ajax2k@change.ua", password: "ert234qw", isActive: false }
 ];
 
-/*
-  Используйте следующий объект постов пользователей при создании экземпляра SocialBook
-*/
 const initialPosts = {
   "-s19a6hqce": [
     { id: "-5sgljaskg", text: "post #1", likes: 3 },
@@ -92,16 +67,8 @@ const initialPosts = {
   ],
 };
 
-/*
-  Для создания уникального идентификатора для поля id, используйте 
-  вспомогательную функцию getId(), возвращающую уникальную строку.
-  
-  К примеру: const user = { id: getId(), name: 'Mango' };
-*/
 const getId = () => "-" + Math.random().toString(36).substr(2, 9);
 
 const book = new SocialBook(initialUsers, initialPosts);
-
-book.addPost('-qkpzenjxe', { id: 'xxx', text: 'post #qweqwe', likes: 666 });
 
 console.log(book);
