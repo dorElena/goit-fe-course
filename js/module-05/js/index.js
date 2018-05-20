@@ -5,24 +5,23 @@ function SocialBook (users = [], posts = {}) {
   this.posts = posts;
 
   this.getAllUsers = (users) => {
-    return this.users.map(user => user)
+    return this.users;
   };
     
   this.getUserByLogin = (users, login) => {
-    return this.users.filter(user => user.login === login);
+    return this.users.find(user => user.login === login);
   };
   
   this.getUserStatus = (userId) => {
-    return initialUsers.reduce((acc, user) => {
+    return initialUsers.filter(user => {
       if (this.user.id === userId) {
-        return (acc = "active");
+        this.user.isActive ? "active" : "inactive"
       }
-      return acc;
-    }, "inactive");
+    });
   };
   
   this.removeUserById = (userId) => {
-    return this.users.find(user => {
+    return this.users.filter(user => {
       if (user.id === userId) {
         delete this.users.user;
       }
@@ -30,7 +29,7 @@ function SocialBook (users = [], posts = {}) {
   };
 
   this.getUsersCount = () => {
-    return this.users.reduce((acc, value) => acc + 1, 0);
+    return this.users.length;
   };
 
   this.addUser = (user) => {
