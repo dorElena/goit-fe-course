@@ -13,19 +13,30 @@ function SocialBook (users = [], posts = {}) {
   };
   
   this.getUserStatus = (userId) => {
-    return initialUsers.filter(user => {
-      if (this.user.id === userId) {
-        this.user.isActive ? "active" : "inactive"
+    let userOb;
+    this.users.find(user => {
+      if (Object.values(user).includes(userId)) {
+        return userOb = user;
       }
     });
+    let userStatus;
+    if (userOb.isActive) {
+        userStatus = "active";
+      } else {
+        userStatus = "inactive";
+    }
+    return userStatus;
   };
   
   this.removeUserById = (userId) => {
-    return this.users.filter(user => {
-      if (user.id === userId) {
-        delete this.users.user;
+    let indexUser;
+    this.users.filter(user => {
+      if (Object.values(user).includes(userId)) {
+        return indexUser = this.users.indexOf(user);
       }
     });
+    
+    return this.users = this.users.splice(indexUser, 1);
   };
 
   this.getUsersCount = () => {
@@ -37,6 +48,8 @@ function SocialBook (users = [], posts = {}) {
     user.id = getId();
 
     this.users.push(user);
+
+    return this.users;
   };
 };
 
@@ -65,5 +78,8 @@ const initialPosts = {
 const getId = () => "-" + Math.random().toString(36).substr(2, 9);
 
 const book = new SocialBook(initialUsers, initialPosts);
-book.addUser({login: 'qweqwe@gmai.com', password: 'qweqwe'});
+
+console.log(book.getUserStatus("-e51cpd4di"));
+console.log(book.removeUserById("-e51cpd4di"));
+console.log(book.addUser({login: 'qweqwe@gmai.com', password: 'qweqwe'}));
 console.log(book);
