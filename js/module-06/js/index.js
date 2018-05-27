@@ -67,9 +67,10 @@ Hamburger.prototype.addTopping = function (topping) {
 }
 
 Hamburger.prototype.removeTopping = function (topping) { 
-  if (Object.values(this).includes(topping)) {
-    return Object.values(this).filter(val => val !== topping);
+  if (this.topping.includes(topping)) {
+    delete this.topping.filter(val => val == topping);
   }
+  return this;
 }
 
 Hamburger.prototype.getToppings = function () { 
@@ -142,3 +143,5 @@ console.log("Is hamburger large: ", hamburger.getSize() === Hamburger.SIZE_LARGE
 hamburger.removeTopping(Hamburger.TOPPING_SPICE);
 
 console.log("Hamburger has %d toppings", hamburger.getToppings().length);
+
+console.log(hamburger);
