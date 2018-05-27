@@ -1,54 +1,13 @@
 "use strict";
 
-/* 
-  Сеть фастфудов предлагает несколько видов гамбургеров. 
-  
-  База гамбургера может быть большой или маленькой (обязательно):
-	- маленькая (+30 денег, +50 калорий)
-	- большая (+50 денег, +100 калорий)
-	
-  Гамбургер может быть с одной из нескольких видов начинок (обязательно):
-	- сыром (+15 денег, +20 калорий)
-	- салатом (+20 денег, +5 калорий)
-	- мясом (+35 денег, +15 калорий)
-	
-  Дополнительно, гамбургер можно: 
-	- посыпать приправой (+10 денег, +0 калорий) 
-	- полить соусом (+15 денег, +5 калорий)
-  Типы начинок и размеры надо сделать константами. Никаких магических строк 
-  и чисел быть не должно.
-  Напишите скрипт, расчитывающий стоимость и калорийность гамбургера. 
-  Используте ООП подход, создайте класс Hamburger, константы, методы 
-  для выбора опций и рассчета нужных величин. 
-  Класс Hamburger, получает на вход информацию о гамбургере, а на выходе 
-  дает информацию о каллориях и цене. Никакого взаимодействия с пользователем 
-  и внешним миром класс делать не должен - все нужные данные ему передают явно
-  в виде аргументов при создании экземпляра. 
-  Почему? Потому что каждый должен заниматься своим делом, класс должен только 
-  рассчитывать результирующий гамбургер, а вводом-выводом пусть занимается 
-  внешний, относительно него, код. Такой класс унивесален: можно использовать его 
-  выводя данные через console.log, а можно создать интерфейс с кнопками и полями ввода. 
-  Именно в таком стиле необходимо писать код, тем самым достигая универсальности 
-  и возможности повторного использования.
-  Написанный класс должен соответствовать следующему jsDoc описанию функции-конструктора.
-  Вам необходимо написать используя синтаксис ES6 class. То есть класс должен содержать 
-  указанные методы, которые принимают и возвращают данные указанного типа.
-*/
-
-/**
-* Класс, объекты которого описывают параметры гамбургера. 
-* 
-* @constructor
-* @param size        Размер
-* @param stuffing    Начинка
-* @throws {HamburgerException}  При неправильном использовании (только в доп. задании)
-*/
-function Hamburger({ size, stuffing }) { 
+class Hamburger {
+  constructor ({size, stuffing}) { 
   this.size = size;
   this.stuffing = stuffing;
- } 
+  this.topping = [];
+  }
+}
 
-/* Размеры, виды начинок и добавок добавить как статические свойства класса. К примеру: */
 Hamburger.SIZE_SMALL = 'SIZE_SMALL';
 Hamburger.SIZE_LARGE = 'SIZE_LARGE';
 
@@ -96,133 +55,90 @@ Hamburger.TOPPINGS = {
   },
 };
 
-/**
-* Добавить topping к гамбургеру. Можно добавить несколько
-* topping, при условии, что они разные.
-*/
-Hamburger.prototype.addTopping = function (topping) { 
-  this.topping = topping;
- }
+Hamburger.prototype.addTopping = function (topping) {
+  
+  if (this.topping.length === 0) {
+    this.topping.push(topping);
+  } else if (!this.topping.includes(topping)) {
+    this.topping.push(topping);
+  } else {
+    return this.topping;
+  }
+}
 
-/**
- * Убрать topping, при условии, что она ранее была 
- * добавлена.
- */
 Hamburger.prototype.removeTopping = function (topping) { 
-  //if(topping есть) {
-//    delete this.topping;
-//  }
- }
+  if (Object.values(this).includes(topping)) {
+    return Object.values(this).filter(val => val !== topping);
+  }
+}
 
-/**
- * Получить список toppings
- * @return {Array} Массив добавленных topping, содержит значения констант
- *                 Hamburger.TOPPING_*
- */
 Hamburger.prototype.getToppings = function () { 
-  let toppings = [];
- // this.filter(tor => (
-    //if (если Hamburger содержит "Hamburger.TOPPING_") {
-    //return toppings.push(Hamburger.TOPPING_)
-    //}
- }
+  return this.topping;
+}
 
-/**
- * Узнать размер гамбургера
- */
 Hamburger.prototype.getSize = function () { 
-  //найти ключ "размер" в данном объекте и вернуть его
-  
- }
+  return this.size;
+}
 
-/**
- * Узнать начинку гамбургера
- */
 Hamburger.prototype.getStuffing = function () { 
-  //найти ключ "начинка" в данном объекте и вернуть его
- }
+  return this.stuffing;
+}
 
-/**
- * Узнать цену гамбургера
- * @return {Number} Цена в деньгах
- */
 Hamburger.prototype.calculatePrice = function () { 
+  let calculatePrice = 0;
+  let calculatePriceSize = Hamburger.SIZES[this.getSize()]['price'];
+  let calculatePriceStuffings = Hamburger.STUFFINGS[this.getStuffing()]['price'];
+  let calculatePriceToppings = 0;
+  if (this.getToppings().length === 0) {
+    calculatePriceToppings;
+  } else if (this.getToppings().length === 1) {
+    calculatePriceToppings = Hamburger.TOPPINGS[this.getToppings()[0]]['price'];
+  } else {
+    calculatePriceToppings = Hamburger.TOPPINGS[this.getToppings()[0]]['price'] + 
+    Hamburger.TOPPINGS[this.getToppings()[1]]['price'];
+  }
   
- }
+  calculatePrice = calculatePriceSize + calculatePriceStuffings + calculatePriceToppings;
 
-/**
- * Узнать калорийность
- * @return {Number} Калорийность в калориях
- */
+  return calculatePrice;
+}
+
 Hamburger.prototype.calculateCalories = function () { 
+  let calculateCalories = 0;
+  let calculateCaloriesSize = Hamburger.SIZES[this.getSize()]['calories'];
+  let calculateCaloriesStufings = Hamburger.STUFFINGS[this.getStuffing()]['calories'];
+  let calculateCaloriesToppings = 0;
+  if (this.getToppings().length === 0) {
+    calculateCaloriesToppings;
+  } else if (this.getToppings().length === 1) {
+    calculateCaloriesToppings = Hamburger.TOPPINGS[this.getToppings()[0]]['calories'];
+  } else {
+    calculateCaloriesToppings = Hamburger.TOPPINGS[this.getToppings()[0]]['calories'] + 
+    Hamburger.TOPPINGS[this.getToppings()[1]]['calories'];
+  }
   
- }
+  calculateCalories = calculateCaloriesSize + calculateCaloriesStufings + calculateCaloriesToppings;
+  
+  return calculateCalories;
+}
 
-
-/* 
-  Переданную информацию о параметрах гамбургера 
-  класс хранит внутри в своих полях. Вот как может 
-  выглядеть использование этого класса:
-*/
-
-// Маленький гамбургер с начинкой из сыра
 const hamburger = new Hamburger({ 
   size: Hamburger.SIZE_SMALL, 
   stuffing: Hamburger.STUFFING_CHEESE
 });
 
-// Добавка из приправы
 hamburger.addTopping(Hamburger.TOPPING_SPICE);
 
-// Спросим сколько там калорий
 console.log("Calories: ", hamburger.calculateCalories());
 
-// Сколько стоит?
 console.log("Price: ", hamburger.calculatePrice());
 
-// Я тут передумал и решил добавить еще соус
 hamburger.addTopping(Hamburger.TOPPING_SAUCE);
 
-// А сколько теперь стоит? 
 console.log("Price with sauce: ", hamburger.calculatePrice());
 
-// Проверить, большой ли гамбургер? 
-console.log("Is hamburger large: ", hamburger.getSize() === Hamburger.SIZE_LARGE); // -> false
+console.log("Is hamburger large: ", hamburger.getSize() === Hamburger.SIZE_LARGE);
 
-// Убрать добавку
 hamburger.removeTopping(Hamburger.TOPPING_SPICE);
-						     
-// Смотрим сколько добавок
-console.log("Hamburger has %d toppings", hamburger.getToppings().length); // 1
 
-/*
-  Обратите внимание в коде выше на такие моменты:
-    - класс не взаимодействует с внешним миром. Это не его дело, этим занимается другой код, 
-    	а класс живет в изоляции от мира
-	
-    - обязательные параметры (размер и начинка) мы передаем через конструктор, 
-    	чтобы нельзя было создать объект, не указав их
-	
-    - необязательные (добавка) добавляем через методы
-    - имена методов начинаются с глагола и имеют вид «сделайЧтоТо»: calculateCalories(), addTopping()
-    
-    - типы начинок обозначены "константами" с понятными именами (на самом деле просто свойствами, 
-      	написанным заглавными буквами, которые мы договорились считать "константами")
-	
-    - объект создается через конструктор - функцию, которая задает начальные значения полей. 
-      	Имя конструктора пишется с большой буквы и обычно является существительным: new Hamburger(...)
-	
-    - "константы" вроде могут иметь значение, являющееся строкой или числом. От смены значения константы 
-      ничего не должно меняться (то есть эти значения не должны где-то еще быть записаны). 
-      
-    - в свойствах объекта гамбургера логично хранить исходные данные (размер, тип начинки), 
-      а не вычисленные из них (цена, число калорий и т.д.). Рассчитывать цену и калории логично 
-      в тот момент, когда это потребуется, а не заранее.
-	
-  При решении задачи в ООП стиле, необходимо ответить на вопросы:	
-    - какие есть сущности, для которых мы сделаем классы? (Гамбургер).
-    - какие у них есть свойства (размер, начинка, добавки). Цена или калории не являются свойствами так 
-      как они вычисляются из других свойств и хранить их не надо.
-    - что мы хотим от них получить (какие у них должны быть методы). Например, сколько стоит гамбургер?
-    - как сущности связаны? У нас одна сущность «Гамбургер» и она ни с чем не связана.
-*/
+console.log("Hamburger has %d toppings", hamburger.getToppings().length);
