@@ -6,6 +6,50 @@ class Hamburger {
   this.stuffing = stuffing;
   this.topping = [];
   }
+
+  addTopping (topping) {
+    if (!this.topping.includes(topping)) {
+      this.topping.push(topping);
+    }
+  }
+
+  removeTopping (topping) { 
+    if (this.topping.includes(topping)) {
+      this.topping = this.topping.filter(val => val !== topping);
+    }
+  }
+
+  getToppings () { 
+    return this.topping;
+  }
+
+  getSize () { 
+    return this.size;
+  }
+
+  getStuffing () { 
+    return this.stuffing;
+  }
+
+  calculatePrice () { 
+    let calculatePrice = 0;
+    let calculatePriceSize = Hamburger.SIZES[this.getSize()].price;
+    let calculatePriceStuffings = Hamburger.STUFFINGS[this.getStuffing()].price;
+    let calculatePriceToppings = this.topping.reduce((acc, topping) => acc + (Hamburger.TOPPINGS[topping].price), 0);
+      
+    calculatePrice = calculatePriceSize + calculatePriceStuffings + calculatePriceToppings;
+    return calculatePrice;
+  }
+
+  calculateCalories () { 
+    let calculateCalories = 0;
+    let calculateCaloriesSize = Hamburger.SIZES[this.getSize()].calories;
+    let calculateCaloriesStufings = Hamburger.STUFFINGS[this.getStuffing()].calories;
+    let calculateCaloriesToppings = this.topping.reduce((acc, topping) => acc + (Hamburger.TOPPINGS[topping].calories), 0);
+      
+    calculateCalories = calculateCaloriesSize + calculateCaloriesStufings + calculateCaloriesToppings;
+    return calculateCalories;
+  }
 }
 
 Hamburger.SIZE_SMALL = 'SIZE_SMALL';
@@ -55,78 +99,12 @@ Hamburger.TOPPINGS = {
   },
 };
 
-Hamburger.prototype.addTopping = function (topping) {
-  
-  if (this.topping.length === 0) {
-    this.topping.push(topping);
-  } else if (!this.topping.includes(topping)) {
-    this.topping.push(topping);
-  } else {
-    return this.topping;
-  }
-}
-
-Hamburger.prototype.removeTopping = function (topping) { 
-  if (this.topping.includes(topping)) {
-    delete this.topping.filter(val => val == topping);
-  }
-  return this;
-}
-
-Hamburger.prototype.getToppings = function () { 
-  return this.topping;
-}
-
-Hamburger.prototype.getSize = function () { 
-  return this.size;
-}
-
-Hamburger.prototype.getStuffing = function () { 
-  return this.stuffing;
-}
-
-Hamburger.prototype.calculatePrice = function () { 
-  let calculatePrice = 0;
-  let calculatePriceSize = Hamburger.SIZES[this.getSize()]['price'];
-  let calculatePriceStuffings = Hamburger.STUFFINGS[this.getStuffing()]['price'];
-  let calculatePriceToppings = 0;
-  if (this.getToppings().length === 0) {
-    calculatePriceToppings;
-  } else if (this.getToppings().length === 1) {
-    calculatePriceToppings = Hamburger.TOPPINGS[this.getToppings()[0]]['price'];
-  } else {
-    calculatePriceToppings = Hamburger.TOPPINGS[this.getToppings()[0]]['price'] + 
-    Hamburger.TOPPINGS[this.getToppings()[1]]['price'];
-  }
-  
-  calculatePrice = calculatePriceSize + calculatePriceStuffings + calculatePriceToppings;
-
-  return calculatePrice;
-}
-
-Hamburger.prototype.calculateCalories = function () { 
-  let calculateCalories = 0;
-  let calculateCaloriesSize = Hamburger.SIZES[this.getSize()]['calories'];
-  let calculateCaloriesStufings = Hamburger.STUFFINGS[this.getStuffing()]['calories'];
-  let calculateCaloriesToppings = 0;
-  if (this.getToppings().length === 0) {
-    calculateCaloriesToppings;
-  } else if (this.getToppings().length === 1) {
-    calculateCaloriesToppings = Hamburger.TOPPINGS[this.getToppings()[0]]['calories'];
-  } else {
-    calculateCaloriesToppings = Hamburger.TOPPINGS[this.getToppings()[0]]['calories'] + 
-    Hamburger.TOPPINGS[this.getToppings()[1]]['calories'];
-  }
-  
-  calculateCalories = calculateCaloriesSize + calculateCaloriesStufings + calculateCaloriesToppings;
-  
-  return calculateCalories;
-}
-
 const hamburger = new Hamburger({ 
   size: Hamburger.SIZE_SMALL, 
   stuffing: Hamburger.STUFFING_CHEESE
 });
+
+console.log(hamburger);
 
 hamburger.addTopping(Hamburger.TOPPING_SPICE);
 
@@ -144,4 +122,3 @@ hamburger.removeTopping(Hamburger.TOPPING_SPICE);
 
 console.log("Hamburger has %d toppings", hamburger.getToppings().length);
 
-console.log(hamburger);
