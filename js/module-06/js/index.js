@@ -33,8 +33,8 @@ class Hamburger {
 
   calculatePrice () { 
     let calculatePrice = 0;
-    let calculatePriceSize = Hamburger.SIZES[this.getSize()].price;
-    let calculatePriceStuffings = Hamburger.STUFFINGS[this.getStuffing()].price;
+    let calculatePriceSize = Hamburger.SIZES.this.size.price;
+    let calculatePriceStuffings = Hamburger.STUFFINGS.this.stuffing.price;
     let calculatePriceToppings = this.topping.reduce((acc, topping) => acc + (Hamburger.TOPPINGS[topping].price), 0);
       
     calculatePrice = calculatePriceSize + calculatePriceStuffings + calculatePriceToppings;
@@ -43,8 +43,8 @@ class Hamburger {
 
   calculateCalories () { 
     let calculateCalories = 0;
-    let calculateCaloriesSize = Hamburger.SIZES[this.getSize()].calories;
-    let calculateCaloriesStufings = Hamburger.STUFFINGS[this.getStuffing()].calories;
+    let calculateCaloriesSize = Hamburger.SIZES.this.size.calories;
+    let calculateCaloriesStufings = Hamburger.STUFFINGS.this.stuffing.calories;
     let calculateCaloriesToppings = this.topping.reduce((acc, topping) => acc + (Hamburger.TOPPINGS[topping].calories), 0);
       
     calculateCalories = calculateCaloriesSize + calculateCaloriesStufings + calculateCaloriesToppings;
