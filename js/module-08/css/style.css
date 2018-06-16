@@ -1,0 +1,50 @@
+html {
+    box-sizing: border-box;
+  }
+  
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+  
+body {
+  font-family: "PT Sans", sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+}
+  
+.wraper {
+  width: 1280px;
+  margin: auto;
+  padding: 20px;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  border: 2px solid #212121;
+  padding: 5px;
+}
+  
+.preview {
+  display: flex;
+  list-style: none;
+  margin: 20px 0;
+}
+
+.preview--item {
+  margin-right: 5px;
+}
+
+.preview-item:last-child {
+  margin-left: 0px;
+}
+
+.js-active {
+  border: 2px solid #ff0000;
+}

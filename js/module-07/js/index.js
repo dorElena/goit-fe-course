@@ -79,11 +79,11 @@ function createPostCard({img, title, text, stats}) {
   <h2 class="post__title">${title}</h2>
   <p class="post__text">${text}</p>
   <ul class="actions post__actions">
-  ${Object.entries(stats).reduce((acc, key) => acc + 
+  ${Object.entries(stats).reduce((acc, [key, value]) => acc + 
     `<li class="actions__item>
       <button class="actions__btn">
-        <span class="actions__icon actions__icon--${key[0]}"></span>
-        <span class="actions__count">${key[1]}</span>
+        <span class="actions__icon actions__icon--${key}"></span>
+        <span class="actions__count">${value}</span>
       </button>
     </li>`, ``)}</ul>
   </div>`;
