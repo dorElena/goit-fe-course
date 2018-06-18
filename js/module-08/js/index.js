@@ -19,7 +19,7 @@ function createGallery(arr) {
   <ul class="preview">
   ${arr.reduce((acc, obj) => acc + 
     `<li class="preview-item">
-    <img src="${obj.preview}" data_fullview="${obj.fullview}" alt="${obj.alt}">
+    <img src="${obj.preview}" data-fullview="${obj.fullview}" alt="${obj.alt}">
     </li>`, "")}
   </ul>`;
 }
@@ -29,43 +29,23 @@ const previewList = document.querySelector(".preview");
 const previewItem = document.querySelector(".preview-item");
 const previewItems = document.querySelectorAll("li");
 
-const imgActive = previewItem.firstElementChild;
-imgActive.classList.add("js-active");
-const atributsImgActive = imgActive.attributes;
-fullview.innerHTML = `<img src=${atributsImgActive.data_fullview.value} alt=${atributsImgActive.alt.value}>`;
+const itemChild = previewItem.firstElementChild;
+itemChild.classList.add("js-active");
+fullview.innerHTML = `<img src=${itemChild.dataset.fullview} alt=${itemChild.alt}>`;
 
-previewList.addEventListener('click', handlePreviewClik);
+previewList.addEventListener('click', setActiveImg);
 
-function handlePreviewClik({target}) {
-  const nodaName = target.nodeName;
+function setActiveImg(event) {
+  const nodaName = event.target.nodeName;
 
   if (nodaName !== "IMG") return;
-
-  setActive(previewItems, fullview, target);
-}
-
-function setActive(previewItems, fullview, target) {
-  setActiveImg(previewItems, target);
-  setActiveFul(fullview, target);
-}
-
-function setActiveImg(previewItems, target) {
+  
   previewItems.forEach(item => {
-    const itemChild = item.firstElementChild;
-    if (itemChild === target) {
-      itemChild.classList.add("js-active");
+    if (item.firstElementChild === event.target) {
+      item.firstElementChild.classList.add("js-active");
+      fullview.innerHTML = `<img src=${item.firstElementChild.dataset.fullview} alt=${item.firstElementChild.alt}>`;
     } else {
-      itemChild.classList.remove("js-active");
+      item.firstElementChild.classList.remove("js-active");
     }
   });
-}
-
-function setActiveFul(fullview, target) {
-  const fullviewChild = fullview.firstElementChild;
-  galleryItems.reduce((acc, obj) => {
-    if (obj.alt === target.alt) {
-      fullviewChild.setAttribute('src', obj.fullview);
-      fullviewChild.setAttribute('alt', obj.alt);
-    }
-  }) 
 }
