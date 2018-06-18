@@ -26,26 +26,34 @@ function createGallery(arr) {
 
 const fullview = document.querySelector(".fullview");
 const previewList = document.querySelector(".preview");
-const previewItem = document.querySelector(".preview-item");
-const previewItems = document.querySelectorAll("li");
-
-const itemChild = previewItem.firstElementChild;
-itemChild.classList.add("js-active");
-fullview.innerHTML = `<img src=${itemChild.dataset.fullview} alt=${itemChild.alt}>`;
+const previewItems = document.querySelectorAll(".preview-item");
 
 previewList.addEventListener('click', setActiveImg);
 
-function setActiveImg(event) {
-  const nodaName = event.target.nodeName;
+setActiveItem();
 
-  if (nodaName !== "IMG") return;
+function setActiveItem() {
+  const itemChild = previewItems[0].firstElementChild;
+  itemChild.classList.add("js-active");
+  fullview.innerHTML = `<img src=${itemChild.dataset.fullview} alt=${itemChild.alt}>`;
+}
+
+function setActiveImg(event) {
+  if (event.target.nodeName !== "IMG") return;
   
   previewItems.forEach(item => {
     if (item.firstElementChild === event.target) {
       item.firstElementChild.classList.add("js-active");
-      fullview.innerHTML = `<img src=${item.firstElementChild.dataset.fullview} alt=${item.firstElementChild.alt}>`;
+      
+      setActiveFul(item.firstElementChild);
+      
     } else {
       item.firstElementChild.classList.remove("js-active");
     }
   });
+}
+
+function setActiveFul(item) {
+  fullview.firstElementChild.setAttribute("src", item.dataset.fullview);
+  fullview.firstElementChild.setAttribute("alt", item.alt);
 }
