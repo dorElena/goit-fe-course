@@ -57,6 +57,7 @@ function resetTimer(target) {
   timer.startTime = Date.now();
   timer.deltaTime = 0;
   timer.id = 0;
+  timer.pauseTime = 0;
   time.textContent = getFormattedTime(timer.deltaTime);
   startBtn.textContent = 'Start';
   }
