@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>js-module-10</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="wraper">
+        <!-- get all users -->
+        <div class="container">
+            <p>Вернуть текущий список всех пользователей</p>
+            <form class="search-form">
+                <button class="btn js-btn-get-all-users" type="submit">get all users</button>
+            </form>
+            <p class="result js-result-get-all-users"></p>
+        </div>
+        
+        <!-- get user by id -->
+        <div class="container">
+            <p>Вернуть пользователя с переданным id</p>
+            <form class="search-form">
+                <input class="js-input-id" type="text" placeholder="Enter user id">
+                <button class="btn js-btn-get-user-by-id" type="submit">get user by id</button>
+            </form>
+            <p class="result js-result-get-user-by-id"></p>
+        </div>
+
+        <!-- add user -->
+        <div class="container">
+            <p>Записать в БД юзера с полями name и age</p>
+            <form class="search-form">
+                <input class="js-input-add-user-name" type="text" placeholder="Enter user name">
+                <input class="js-input-add-user-age" type="text" placeholder="Enter user age">
+                <button class="btn js-btn-add-user" type="submit">add user</button>
+            </form>
+            <p class="result js-result-add-user"></p>
+        </div>
+
+        <!-- remove user -->
+        <div class="container">
+            <p>Удалить из БД юзера по указанному id</p>
+            <form class="search-form">
+                <input class="js-input-remove-user" type="text" placeholder="Enter user id">
+                <button class="btn js-btn-remove-user" type="submit">remove user</button>
+            </form>
+            <p class="result js-result-remove-user"></p>
+        </div>
+
+        <!-- update user -->
+        <div class="container">
+            <p>Обновить данные пользователя по id</p>
+            <form class="search-form">
+                <input class="js-input-update-user-id" type="text" placeholder="Enter user id">
+                <input class="js-input-update-user-name" type="text" placeholder="Enter user name">
+                <input class="js-input-update-user-age" type="text" placeholder="Enter user age">
+                <button class="btn js-btn-update-user" type="submit">update user</button>
+            </form>
+            <p class="result js-result-update-user"></p>
+        </div>
+    </div>
+    
+    <script src="js/index.js"></script>
+</body>
+</html>
