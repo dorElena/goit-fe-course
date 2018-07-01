@@ -64,13 +64,13 @@ function addNewUser(evt) {
     age: inputAddUserAge.value,
   };
   
-  fetchUsersPost(newUserObj);
+  fetchUsersPost(newUserObj).then(newUser);
 }
 
 //функция removeUser(id) - должна удалять из БД юзера по указанному id.
 function removeUser(evt) {
   evt.preventDefault();
-  fetchDelUsers(inputRremoveUser.value);
+  fetchDelUsers(inputRremoveUser.value).then(delUser);
 }
 
 //функция updateUser(id, user) - должна обновлять данные пользователя по id. 
@@ -80,7 +80,7 @@ function updateUser(evt) {
     name: inputUpdateUserName.value,
     age: inputUpdateUserAge.value,
   };
-  fetchUpdateUsers(updateUserObj, inputUpdateUserId.value);
+  fetchUpdateUsers(updateUserObj, inputUpdateUserId.value).then(upUser);
 }
 
 function createUser(arrUsers) {
@@ -104,6 +104,20 @@ function userById(arrUsers) {
     `id: ${userData.id}, name: ${userData.name}, age: ${userData.age}`;
 }
 
+function newUser(user) {
+  resultAddUser.textContent = `id: ${user._id}, name: ${user.name}, age: ${user.age}`;
+}
+
+function upUser(user) {
+  resultUpdateUserName.textContent = `id: ${user.id}, name: ${user.name}, age: ${user.age}`;
+}
+
+function delUser(user) {
+  if (user.status === 200) {
+    resultRemoveUser.textContent = `Юзер удален из БД`;
+  }
+}
+
 function fetchUsers(url) {
   return fetch(url)
     .then(response => {
@@ -124,7 +138,10 @@ function fetchUsersPost(newUserObj) {
       'Accept': 'application/json',
       'Content-Type': 'application/json',
     }
-  });
+  })
+  .then(response => response.json())
+  .then(user => user.data)
+  .catch(error => console.log('ERROR' + error));
 }
 
 function fetchUpdateUsers(updateUserObj, input) {
@@ -135,11 +152,17 @@ function fetchUpdateUsers(updateUserObj, input) {
       'Accept': 'application/json',
       'Content-Type': 'application/json',
     }
-  });
+  })
+  .then(response => response.json())
+  .then(user => user.data)
+  .catch(error => console.log('ERROR' + error));
 }
 
 function fetchDelUsers(input) {
   return fetch((apiUrl+input), {
     method: 'DELETE',
-  });
+  })
+  .then(response => response.json())
+  .then(user => user)
+  .catch(error => console.log('ERROR' + error));
 }
