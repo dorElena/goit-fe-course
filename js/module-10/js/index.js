@@ -99,8 +99,9 @@ function upUser(user) {
 function delUser(user) {
   if (user.status === 200) {
     resultRemoveUser.textContent = `Юзер удален из БД`;
+  } else {
+    resultRemoveUser.textContent = `Что-то пошло не так`;
   }
-  resultRemoveUser.textContent = `Что-то пошло не так`;
 }
 
 function fetchUsers(url) {
