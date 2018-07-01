@@ -99,6 +99,7 @@ function upUser(user) {
 function delUser(user) {
   if (user.status === 200) {
     resultRemoveUser.textContent = `Юзер удален из БД`;
+  }
 }
 
 function fetchUsers(url) {
