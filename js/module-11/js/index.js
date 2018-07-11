@@ -161,6 +161,7 @@ function resetFilter(evt) {
   filter.color = [];
   filter.releaseDate = [];
   filter.isActive = false;
+  cardProduct.innerHTML = "";
 }
 
 function rendTops(filter, laptops) {
