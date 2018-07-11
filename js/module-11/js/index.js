@@ -169,10 +169,11 @@ function rendTops(filter, laptops) {
   const markup = laptops.reduce((acc, laptop) => {
     if (filter.size.includes(`${laptop.size}`) 
       && filter.color.includes(`${laptop.color}`) 
-      && filter.releaseDate.includes(`${laptop.releaseDate}`)) {
-      console.log(template(laptop))
-      acc + template(laptop);      
-    }}, '');
-
+      && filter.releaseDate.includes(`${laptop.releaseDate}`)) { 
+        acc += template(laptop);
+        return acc;
+      } 
+    return acc;
+    }, ""); 
   cardProduct.insertAdjacentHTML('afterbegin', markup);
 }
