@@ -1,0 +1,82 @@
+html {
+    box-sizing: border-box;
+  }
+    
+  *,
+  *::before,
+  *::after {
+    box-sizing: inherit;
+  }
+    
+  body {
+    font-size: 16px;
+    font-weight: 400;
+    font-family: sans-serif;
+    font-style: normal;
+    background-color: #ffffff;
+
+  }
+  
+  .wraper {
+    width: 820px;
+    margin: auto;
+  }
+
+.about {
+  font-family: sans-serif;
+  font-size: 16px;
+}
+
+.about::before {
+  content: "[";
+  display: inline-block;
+  color: #000000;
+}
+
+.about::after {
+  content: "]";
+  display: inline-block;
+  color: #000000;
+}
+
+.carousel-about {
+  width: 300px;
+  height: 190px;
+  margin: auto;
+  box-shadow: 0 14px 28px rgba(0,0,0,0), 0 10px 10px rgba(0,0,0,0.22);
+}
+
+.about-text {
+  color: #000000;
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 30px;
+}
+
+.about-text::before {
+  display: block;
+  content: "";
+  width: 8px;
+  height: 8px;
+  background-color: #f06e2c;
+  margin-bottom: 15px;
+}
+.slick-arrow {
+  position: absolute;
+  height: 25px;
+  width: 15px;
+  z-index: 10;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.slick-prev {
+  top: 50%;
+  right: 225px;
+  border-top-left-radius: 50%;
+}
+
+.slick-next {
+  bottom: 50px;
+  left: 225px;
+  border-bottom-right-radius: 50%;
+}
