@@ -1,10 +1,12 @@
-import gridItemTpl from './templates/grid-item.hbs';
+import gridItemTpl from './templetes/grit-item.hbs';
+import * as storage from './services/storage';
 
 const grid = document.querySelector('.grid');
 const form = document.querySelector('.form');
 const input = document.querySelector('.input');
 
-const bookmarks = [];
+const persistedBookmarks = storage.get();
+const fetchedBookmarks = persistedBookmarks ? persistedBookmarks : [];
 
 form.addEventListener('submit', handleFormSubmit);
 grid.addEventListener('click', deleteUrlBookmark);
@@ -14,26 +16,23 @@ grid.addEventListener('click', deleteUrlBookmark);
 function handleFormSubmit(e) {
     e.preventDefault();
   
-    if (bookmarks.includes(input.value)) {
+    if (fetchedBookmarks.includes(input.value)) {
         alert('такая закладка уже есть');
-        break;
+        return;
     }
 
-    bookmarks.unshift(input.value);
+    fetchedBookmarks.unshift(input.value);
 
-    bookmarkGid(bookmarks);
-}
-
-function createGridItems(items) {
-    return items.reduce((markup, item) => markup + gridItemTpl(item), '');
+    bookmarkGid(fetchedBookmarks);
 }
 
 function bookmarkGid(bookmarks) {
     const markup = createGridItems(bookmarks);
     updateBookmarkGid(markup);
 }
-  
-  function createGridItems(items) {
+
+function createGridItems(items) {
+    console.log(items);
     return items.reduce((markup, item) => markup + gridItemTpl(item), '');
 }
 

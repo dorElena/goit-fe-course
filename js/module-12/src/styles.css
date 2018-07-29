@@ -31,12 +31,12 @@
   }
   
   .grid {
-    width: 1170px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 1020px;
     margin: 0 auto;
     padding: 16px;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    grid-gap: 16px;
   }
   
   .grid-item {
