@@ -1,17 +1,18 @@
 import gridItemTpl from './templetes/grit-item.hbs';
 import * as storage from './services/storage';
+import './styles.css';
 
 const grid = document.querySelector('.grid');
 const form = document.querySelector('.form');
 const input = document.querySelector('.input');
 
 const persistedBookmarks = storage.get();
-const fetchedBookmarks = persistedBookmarks ? persistedBookmarks : [];
+const fetchedBookmarks = persistedBookmarks ? persistedBookmarks : ['www.google.com', 'github.com','app.schoology.com'];
 
 form.addEventListener('submit', handleFormSubmit);
 grid.addEventListener('click', deleteUrlBookmark);
 
-
+bookmarkGid(fetchedBookmarks);
 
 function handleFormSubmit(e) {
     e.preventDefault();
@@ -26,8 +27,8 @@ function handleFormSubmit(e) {
     bookmarkGid(fetchedBookmarks);
 }
 
-function bookmarkGid(bookmarks) {
-    const markup = createGridItems(bookmarks);
+function bookmarkGid(fetchedBookmarks) {
+    const markup = createGridItems(fetchedBookmarks);
     updateBookmarkGid(markup);
 }
 
