@@ -1,72 +1,59 @@
 import gridItemTpl from './templetes/grit-item.hbs';
 import * as storage from './services/storage';
-import { fetchUrl } from './services/api';
 import './styles.css';
 
 const grid = document.querySelector('.grid');
 const form = document.querySelector('.form');
-const input = document.querySelector('.input');
+const input = form.querySelector('.input');
 
-const persistedBookmarks = storage.get();
-const fetchedBookmarks = persistedBookmarks ? persistedBookmarks : [];
+const bookmarks = storage.get() || [];
 
 form.addEventListener('submit', handleFormSubmit);
-grid.addEventListener('click', deleteUrlBookmark);
+grid.addEventListener('click', deleteBookmark);
 
-bookmarkGid(fetchedBookmarks);
-
-handleFetch();
+init();
 
 function handleFormSubmit(e) {
     e.preventDefault();
 
-    resetGrid();
-  
-    if (fetchedBookmarks.includes(input.value)) {
-        alert('такая закладка уже есть');
-        return;
-    }
-
-    fetchedBookmarks.unshift(input.value);
-
-    bookmarkGid(fetchedBookmarks);
+    const url = input.value;
     
+    const bookmark = {
+        id: Date.now(),
+        url
+    };
     
-    
-    e.target.reset();
+    bookmarks.unshift(bookmark);
+    storage.set(bookmarks);
+    bookmarkGid(bookmarks);
+    form.reset();
 }
 
-function bookmarkGid(fetchedBookmarks) {
-    const markup = createGridItems(fetchedBookmarks);
+function bookmarkGid(arr) {
+    const markup = createGridItems(arr);
     updateBookmarkGid(markup);
 }
 
-function createGridItems(items) {
-    return items.reduce((markup, item) => markup + gridItemTpl(item), '');
+function createGridItems(arr) {
+    return arr.reduce((markup, item) => markup + gridItemTpl(item), '');
 }
 
 function updateBookmarkGid(markup) {
+    grid.innerHTML = "";
     grid.insertAdjacentHTML('beforeend', markup);
 }
 
-function deleteUrlBookmark({ target }) {
+function deleteBookmark({ target }) {
     if (target.nodeName === 'BUTTON') {
+        const idBookmark = Number(target.parentNode.getAttribute('date-set'));
+        const newBookmarks = storage.get().filter(bookmark => bookmark.id !== idBookmark);
+        storage.set(newBookmarks);
         target.parentNode.remove();
     }
 }
 
-function resetGrid() {
-    grid.innerHTML = '';
+function init() {
+    if (bookmarks) {
+        bookmarkGid(bookmarks);
+    }
 }
-
-function handleFetch() {
-      
-    fetchUrl().then(url => {
-      fetchedBookmarks.push(...url);
-      storage.set(fetchedBookmarks);
-  
-      const markup = createGridItems(photos);
-      updatePhotosGrid(markup);
-      
-    });
-  }
