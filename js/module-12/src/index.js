@@ -25,20 +25,20 @@ function handleFormSubmit(e) {
     
     bookmarks.unshift(bookmark);
     storage.set(bookmarks);
-    bookmarkGid(bookmarks);
+    bookmarkGrid(bookmarks);
     form.reset();
 }
 
-function bookmarkGid(arr) {
+function bookmarkGrid(arr) {
     const markup = createGridItems(arr);
-    updateBookmarkGid(markup);
+    updateBookmarkGrid(markup);
 }
 
 function createGridItems(arr) {
     return arr.reduce((markup, item) => markup + gridItemTpl(item), '');
 }
 
-function updateBookmarkGid(markup) {
+function updateBookmarkGrid(markup) {
     grid.innerHTML = "";
     grid.insertAdjacentHTML('beforeend', markup);
 }
@@ -46,14 +46,14 @@ function updateBookmarkGid(markup) {
 function deleteBookmark({ target }) {
     if (target.nodeName === 'BUTTON') {
         const idBookmark = Number(target.parentNode.getAttribute('date-set'));
-        const bookmarks = storage.get().filter(bookmark => bookmark.id !== idBookmark);
-        storage.set(bookmarks);
+        const newBookmarks = storage.get().filter(bookmark => bookmark.id !== idBookmark);
+        storage.set(newBookmarks);
         target.parentNode.remove();
     }
 }
 
 function init() {
     if (bookmarks) {
-        bookmarkGid(bookmarks);
+        bookmarkGrid(bookmarks);
     }
 }

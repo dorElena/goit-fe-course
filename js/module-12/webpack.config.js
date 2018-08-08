@@ -66,6 +66,6 @@ module.exports = {
     stats: 'errors-only',
     clientLogLevel: 'warning',
     compress: true,
-    port: 9013,
+    port: 9014,
   },
 };
