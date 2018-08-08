@@ -46,8 +46,8 @@ function updateBookmarkGid(markup) {
 function deleteBookmark({ target }) {
     if (target.nodeName === 'BUTTON') {
         const idBookmark = Number(target.parentNode.getAttribute('date-set'));
-        const newBookmarks = storage.get().filter(bookmark => bookmark.id !== idBookmark);
-        storage.set(newBookmarks);
+        const bookmarks = storage.get().filter(bookmark => bookmark.id !== idBookmark);
+        storage.set(bookmarks);
         target.parentNode.remove();
     }
 }
