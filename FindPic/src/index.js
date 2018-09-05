@@ -1,6 +1,11 @@
 import { fetchImages } from './services/api';
 import gridItemTpl from './templates/grid-item.hbs';
 import './styles.css';
+import iconUrl from './img/icon.jpg';
+import logoUrl from './img/logo.jpg';
+
+icon.setAtributes('src', iconUrl);
+logo.setAttribute('src', logoUrl);
 
 const logo = document.querySelector('.logo');
 const grid = document.querySelector('.grid');

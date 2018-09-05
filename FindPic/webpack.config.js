@@ -39,6 +39,7 @@ module.exports = {
       },
       {
         test: /\.(png|svg|jpg|gif)$/,
+        exclude: /node_modules/,
         use: ['file-loader'],
       },
       {
@@ -66,6 +67,6 @@ module.exports = {
     stats: 'errors-only',
     clientLogLevel: 'warning',
     compress: true,
-    port: 9013,
+    port: 9016,
   },
 };
